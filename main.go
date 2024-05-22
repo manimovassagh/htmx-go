@@ -5,6 +5,7 @@ import (
 
 	"github.com/a-h/templ"
 	"github.com/labstack/echo/v4"
+	"github.com/manimovassagh/htmx-app/handle"
 )
 
 func main() {
@@ -26,5 +27,5 @@ func Render(ctx echo.Context, statusCode int, t templ.Component) error {
 }
 
 func HomeHandler(c echo.Context) error {
-	return Render(c, http.StatusOK, Home())
+	return Render(c, http.StatusOK, handle.Home())
 }
