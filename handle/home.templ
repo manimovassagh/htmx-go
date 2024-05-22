@@ -1,9 +1,10 @@
 package handle
 
+import "github.com/manimovassagh/htmx-app/layout"
 
 templ Home() {
-	<div>Hello World</div>
-	<div>
-		test
-	</div>
+	@layout.Base() {
+		<div>Hello World</div>
+	
+	}
 }
