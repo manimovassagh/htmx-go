@@ -31,7 +31,7 @@ func Home() templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 1)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div>Hello World</div><button hx-get=\"https://jsonplaceholder.typicode.com/posts\" hx-target=\"#lister\" hx-trigger=\"click from:button\" class=\"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded\">Click me</button><div id=\"lister\"></div><script>\n\t\t\tdocument.addEventListener('htmx:afterRequest', function(event) {\n\t\t\t\tif (event.detail.target.id === 'lister') {\n\t\t\t\t\tvar data = event.detail.xhr.response;\n\t\t\t\t\tvar list = JSON.parse(data);\n\t\t\t\t\tvar html = '<ul>';\n\t\t\t\t\tlist.forEach(function(item) {\n\t\t\t\t\t\thtml += '<li>' + item.title + '</li>';\n\t\t\t\t\t});\n\t\t\t\t\thtml += '</ul>';\n\t\t\t\t\tdocument.getElementById('lister').innerHTML = html;\n\t\t\t\t}\n\t\t\t});\n\t\t</script>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
