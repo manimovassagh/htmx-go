@@ -1,9 +1,8 @@
-build:
+
+template:
+	templ generate --watch
+build: tmp
 	go build -o bin/main
 
-htmlgen:
-	templ generate
-
 run: build
-	@templ generate
 	./bin/main
