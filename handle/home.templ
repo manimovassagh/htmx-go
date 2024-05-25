@@ -5,11 +5,26 @@ import "github.com/manimovassagh/htmx-app/layout"
 templ Home() {
 	@layout.Base() {
 		<div>Hello World</div>
-		<button hx-get="/" hx-target="#toggleDiv" hx-swap="outerHTML" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-			Click me 
+		<button hx-get="https://jsonplaceholder.typicode.com/posts"
+			hx-target="#lister"
+			hx-trigger="click from:button"
+			class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+			Click me
 		</button>
-		 <div id="toggleDiv" class="hidden">
-        This is a toggleable div!
-    </div>
+		<div id="lister"></div>
+		<script>
+			document.addEventListener('htmx:afterRequest', function(event) {
+				if (event.detail.target.id === 'lister') {
+					var data = event.detail.xhr.response;
+					var list = JSON.parse(data);
+					var html = '<ul>';
+					list.forEach(function(item) {
+						html += '<li>' + item.title + '</li>';
+					});
+					html += '</ul>';
+					document.getElementById('lister').innerHTML = html;
+				}
+			});
+		</script>
 	}
 }

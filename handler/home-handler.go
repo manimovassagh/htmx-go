@@ -10,3 +10,7 @@ import (
 func HomeHandler(c echo.Context) error {
 	return utilities.Render(c, http.StatusOK, handle.Home())
 }
+func FetcherHandler(c echo.Context) error {
+
+	return utilities.Render(c, http.StatusOK, handle.Fetcher())
+}

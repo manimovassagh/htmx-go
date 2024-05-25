@@ -1,0 +1,25 @@
+package handle
+
+import "github.com/manimovassagh/htmx-app/layout"
+import "github.com/manimovassagh/htmx-app/models"
+
+
+
+
+templ Fetcher() {
+	@layout.Base() {
+		<div class="flex items-center justify-center h-screen bg-gray-100" >
+	    <button  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Click
+        </button>
+          <div>
+          for _, post := range models.PublicPosts.Posts {
+            <li>{ post.Title }</li>
+            <li>{ post.Body }</li>
+
+          }
+          </div>
+		</div>
+
+	}
+}
